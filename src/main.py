@@ -26,7 +26,10 @@ def aggiungi_testo(nome: str, testo: str):
 
 app = Flask(__name__)
 
-nomi = [i[0] for i in cursore.execute("select nome from testi;").fetchall()]
+dati = cursore.execute("select * from testi;").fetchall()
+testi = {}
+for i in dati:
+    testi[i[0]] = i[1]
 
 @app.route('/')
 def index():
@@ -34,11 +37,11 @@ def index():
 
 @app.route('/gestiretesti')
 def gestiretesti():
-    return render_template("gestisci.html", nomi=nomi)
+    return render_template("gestisci.html", nomi=testi.keys())
 
 @app.route('/gestiretesti/<testo>')
 def gestiretesto(testo):
-    return render_template("gestisci.html", nomi=nomi, )
+    return render_template("gestisci.html", nomi=testi.keys(), contenuti=testi[testo].split('\n'))
 
 if __name__ == "__main__":
     app.run(debug=True)
