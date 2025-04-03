@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block contenuti %}
+
+{% if testospecifico == True %}
+<a href="/gestiretesti/{{ nome }}/tokenizza/0">tokenizza</a>
+{% endif %}
+
 <ul>
     {% for nome in nomi %}
         <li><a href="/gestiretesti/{{ nome }}">{{ nome }}</a></li>

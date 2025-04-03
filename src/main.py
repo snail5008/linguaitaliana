@@ -37,11 +37,21 @@ def index():
 
 @app.route('/gestiretesti')
 def gestiretesti():
-    return render_template("gestisci.html", nomi=testi.keys())
+    return render_template("gestisci.html", nomi=testi.keys(), testospecifico=False)
 
 @app.route('/gestiretesti/<testo>')
 def gestiretesto(testo):
-    return render_template("gestisci.html", nomi=testi.keys(), contenuti=testi[testo].split('\n'))
+    return render_template("gestisci.html", nomi=testi.keys(), nome=testo, contenuti=testi[testo].split('\n'), testospecifico=True)
+
+@app.route('/gestiretesti/<testo>/tokenizza/<int:sentence>')
+def tokenizza_testo(testo, sentence):
+    contenuti = testi[testo].split('\n')
+    contenuti_nuovi = []
+    for i in contenuti:
+        if i == '': continue
+        contenuti_nuovi.append(i)
+
+    return render_template("tokenizza.html", contenuti=contenuti_nuovi[sentence])
 
 if __name__ == "__main__":
     app.run(debug=True)
