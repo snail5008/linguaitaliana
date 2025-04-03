@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestore dei corpus</title>
+</head>
+<body>
+    <div id="barra_di_naviagzione">
+        <h1>Gestore dei corpus</h1>
+        <div id="navpulsanti">
+            |
+            <a href="/" class="navlink">Home</a> |
+            <a href="/gestiretesti" class="navlink">Gestisci i testi</a> |
+        </div>
+    </div>
+
+    {% block contenuti %}
+    {% endblock %}
+
+    <style>
+        h1 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        #barra_di_naviagzione {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .navlink {
+            color: black;
+            text-decoration: none;
+        }
+
+        .navlink:hover {
+            color: grey;
+        }
+
+        .navlink:active {
+            color: black;
+        }
+
+        #navpulsanti {
+            margin: 0 10px;
+        }
+
+    </style>
+</body>
+</html>
